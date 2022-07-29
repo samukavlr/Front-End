@@ -1,5 +1,6 @@
 import React,{useContext} from "react";
 import { Context } from "../../Context/AuthContext";
+import { Link } from "react-router-dom";
 
 
 export const Dashboard=()=>{
@@ -10,8 +11,17 @@ export const Dashboard=()=>{
 
     return(
         <>
+
+        <ul>
+            <li>
+                <Link to="/dashboard">dashboard</Link>
+            </li>
+            <li>
+                <Link to="/usuarios">usuarios</Link>
+            </li>
+        </ul>
             <h1>Dashboard</h1>
-            <h3>Token: {token} </h3>
+            {/* <h3>Token: {token} </h3> */}
             <button type="button" onClick={handleLogout}>Sair</button>
         </>
     )
