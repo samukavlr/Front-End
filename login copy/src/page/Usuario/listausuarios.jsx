@@ -1,6 +1,8 @@
 import React,{ useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import api from "../../services/api";
+import { Button } from "bootstrap";
+import Nav from 'react-bootstrap/Nav';
 
 export const ListaUsuarios =()=>{
     const [data, setData]= useState([]); 
@@ -16,7 +18,7 @@ export const ListaUsuarios =()=>{
 
         const headers={
          'headers':{
-            'Authorization':'Bearer '+valueToken
+            'Authorization':'Bearer '+ valueToken
          },
         } 
         await api.get("/users",headers)
@@ -46,19 +48,27 @@ export const ListaUsuarios =()=>{
     },[])
     return(
         <>
-        <ul>
-            <li>
-                <Link to="/dashboard">dashboard</Link>
-            </li>
-            <li>
-                <Link to="/usuarios">usuarios</Link>
-            </li>
-        </ul>
-            
+        <Nav defaultActiveKey="/home" as="ul">          
+            <Nav.Link> <Link to="/dashboard">dashboard</Link></Nav.Link>
+            <Nav.Link> <Link to="/usuarios">usuarios</Link></Nav.Link>
+            <Nav.Link>  <Link to="/usuarios/novo">Criar usuario</Link></Nav.Link>
+                {/* <li>
+                <li>
+                    <Button> 
+                        <Link className= "noLink" to={"usuarios/editar/"+user.id}>Editar</Link>   
+                        </Button>
+                        </li>
+                        <Button variant= "outline-danger" onClick={() => handleDelete(user.id)}>
+                        excluir
+                        </Button>
+                </li> */}
+              
+        </Nav>
         <h1>Usuarios</h1>
         {           
             data.map(user =>(
                 <div key= {user.id}>
+                    <div>{user.id}</div>
                     <div>{user.name}</div>
                     <div>{user.email}</div>
                 </div>

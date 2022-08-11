@@ -4,6 +4,7 @@ import { Context } from "../Context/AuthContext";
 import { ListaUsuarios } from "../page/Usuario/listausuarios";
 import {Login} from '../components/Login/Login'
 import { Dashboard } from '../page/Dashboard';
+import { UsuariosForm } from "../page/UsuariosForm/UsuariosForm";
 
 function CustomRoute({isPrivate,...rest}){
     
@@ -20,7 +21,11 @@ export default function PrivateRoute(){
         <Switch>
             <CustomRoute exact path="/" component ={Login}/>
             <CustomRoute isPrivate path="/dashboard" component ={Dashboard}/>
+            <CustomRoute isPrivate path="/usuarios/novo" component ={UsuariosForm}/>
+            <CustomRoute isPrivate path="/usuarios/editar:id" component ={UsuariosForm}/>
             <CustomRoute isPrivate path="/usuarios" component ={ListaUsuarios}/>
+            
+           
         </Switch>
     )
 }

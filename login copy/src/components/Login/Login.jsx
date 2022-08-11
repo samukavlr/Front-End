@@ -83,8 +83,14 @@ export function Login(){
                     mensagem:err.response.data.mensagem,
                     loading:false
                 })
-              
             } 
+            else {
+                setStatus({
+                    type:'erro',
+                    mensagem:'Erro: tente mais tarde',
+                    loading:false
+                })
+            }
         })
 
     }

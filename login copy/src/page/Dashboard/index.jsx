@@ -1,6 +1,7 @@
 import React,{useContext} from "react";
 import { Context } from "../../Context/AuthContext";
 import { Link } from "react-router-dom";
+import Nav from 'react-bootstrap/Nav';
 
 
 export const Dashboard=()=>{
@@ -11,15 +12,11 @@ export const Dashboard=()=>{
 
     return(
         <>
-
-        <ul>
-            <li>
-                <Link to="/dashboard">dashboard</Link>
-            </li>
-            <li>
-                <Link to="/usuarios">usuarios</Link>
-            </li>
-        </ul>
+            <Nav defaultActiveKey="/home" as="ul">          
+                <Nav.Link> <Link to="/dashboard">dashboard</Link></Nav.Link>
+                <Nav.Link> <Link to="/usuarios">usuarios</Link></Nav.Link>
+                <Nav.Link>  <Link to="/usuarios/novo">Criar usuario</Link></Nav.Link>      
+             </Nav>
             <h1>Dashboard</h1>
             {/* <h3>Token: {token} </h3> */}
             <button type="button" onClick={handleLogout}>Sair</button>
